@@ -1,0 +1,91 @@
+/* General container */
+.item-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Title styling */
+.item-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Description and category styling */
+.item-description, .item-category {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Reviews section title */
+.reviews-title {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Reviews container */
+.reviews-container {
+    margin-top: 15px;
+}
+
+/* Individual review cards */
+.review-card {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Review text */
+.review-text {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Review date */
+.review-date {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Loading and error text */
+.loading-text, .error-text, .not-found-text, .no-reviews-text {
+    text-align: center;
+    color: #777;
+    font-size: 16px;
+}
+
+.stars {
+    font-size: 26px;
+    color: gold;
+}
+
+.item-card-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+}
+
+.item-card-link:visited {
+    color: inherit; /* Prevent changing to purple after visit */
+}
+
+.item-card-link:hover {
+    text-decoration: none; /* No underline on hover */
+}
+
+.item-card h3 {
+    margin: 0;
+    color: #333; /* Set a neutral color for the item title */
+}
+
+.item-card p {
+    color: #555; /* Set a neutral color for item description */
+}

@@ -1,0 +1,36 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #ffe6e6; /* Light red background */
+    color: #d9534f; /* Red color for text */
+    font-family: 'Arial', sans-serif;
+}
+
+.error-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    font-size: 18px;
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.ok-button {
+    width: 60px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.ok-button:hover {
+    background-color: #0056b3;
+}
