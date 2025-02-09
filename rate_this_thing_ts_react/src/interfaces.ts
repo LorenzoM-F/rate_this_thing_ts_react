@@ -1,4 +1,4 @@
-export interface Item {
+export interface Items {
     id: number;
     name: string;
     categoryName: string;
@@ -16,4 +16,15 @@ export interface Review {
     rating: number;
     reviewDate: string;
     reviewText: string;
+}
+
+export interface User {
+    id: 1,
+    username: string,
+    email: string,
+    firstName: string,
+    lastName: string,
+    dateOfBirth: number[],
+    profileImage: string,
+    bio:  string
 }

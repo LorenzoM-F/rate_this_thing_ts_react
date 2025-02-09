@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import '../css/Error.css';
 
 interface ErrorProps {
     message: string;

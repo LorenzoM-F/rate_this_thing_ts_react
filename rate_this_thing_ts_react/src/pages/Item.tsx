@@ -1,30 +1,31 @@
 
 
-import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import '../css/Item.css';
 import Back from '../components/Back.tsx';
 import Loading from '../components/Loading.tsx';
 import Errors from '../components/Error.tsx';
+import { motion } from "framer-motion";
 
-import { Review } from "../interfaces.ts";
-import type { Item } from "../interfaces.ts";
+import { Items, Review, User } from "../interfaces.ts";
 
 function Item() {
-    const {id} = useParams();
-    const [item, setItem] = useState<Item[]>([]);
+    const { id } = useParams();
+    const [item, setItem] = useState<Items>();
     const [reviews, setReviews] = useState<Review[]>([]);
+    const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
     const [itemError, setItemError] = useState<string>('');
 
     useEffect(() => {
         const fetchItem = async () => {
             try {
-                const response: Response = await fetch(`http://75.119.131.245:8081/v1/items/${id}`);
+                const response: Response = await fetch(`http://localhost:3001/items/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch item details');
                 }
-                const data: Item[] = await response.json();
+                const data: Items = await response.json();
                 setItem(data);
             } catch (err) {
                 const errorMessage = err instanceof Error ? err.message : 'Unknown error';
@@ -37,10 +38,22 @@ function Item() {
 
         const fetchReviews = async () => {
             try {
-                const response = await fetch(`http://75.119.131.245:8081/v1/items/${id}/reviews`);
+                const response = await fetch(`http://localhost:3001/items/${id}/reviews`);
                 if (response.ok) {
-                    const data = await response.json();
+                    const data: Review[] = await response.json();
                     setReviews(data);
+                }
+            } catch {
+                console.error('Failed to fetch item reviews');
+            }
+        };
+
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch(`http://localhost:3001/users`);
+                if (response.ok) {
+                    const data: User[] = await response.json();
+                    setUsers(data);
                 }
             } catch {
                 console.error('Failed to fetch item reviews');
@@ -49,18 +62,19 @@ function Item() {
 
         fetchItem();
         fetchReviews();
+        fetchUsers();
     }, [id]);
 
     if (loading) {
-        return <Loading/>;
+        return <Loading />;
     }
 
     if (itemError) {
-        return <Errors message={itemError}/>;
+        return <Errors message={itemError} />;
     }
 
     if (!item) {
-        return <Errors message="Item not found"/>;
+        return <Errors message="Item not found" />;
     }
 
     const getUserRating = (userId: number) => {
@@ -72,6 +86,11 @@ function Item() {
         ? Math.round(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length)
         : 0;
 
+    const getUserName = (userId: number) => {
+        const user = users.find(u => u.id === userId);
+        return user ? user.firstName : 'user';
+    }
+
     return (
         <>
             <div className="item-container">
@@ -79,12 +98,12 @@ function Item() {
                 <div className="average-rating">
                     <p><strong>Rating:</strong></p>
                     {[...Array(averageRating)].map((_, index) => (
-                        <span key={index} className="stars" style={{color: 'gold'}}>
+                        <span key={index} className="stars" style={{ color: 'gold' }}>
                             &#9733;
                         </span>
                     ))}
                     {[...Array(5 - averageRating)].map((_, index) => (
-                        <span key={index} className="stars" style={{color: '#ddd'}}>
+                        <span key={index} className="stars" style={{ color: '#ddd' }}>
                             &#9733;
                         </span>
                     ))}
@@ -99,30 +118,34 @@ function Item() {
                 {reviews.length > 0 ? (
                     <div className="reviews-container">
                         {reviews.map((review, index) => (
-                            <div key={index} className="review-card">
+                            <motion.div key={index} className="review-card"
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: index * 0.2 }}
+                            >
                                 <div className="review-rating">
                                     {[...Array(getUserRating(review.userId))].map((_, starIndex) => (
-                                        <span key={starIndex} className="stars" style={{color: 'gold'}}>
+                                        <span key={starIndex} className="stars" style={{ color: 'gold' }}>
                                             &#9733;
                                         </span>
                                     ))}
                                 </div>
                                 <p className="review-date">
-                                    user {review.userId} - {new Intl.DateTimeFormat('en-GB', {
-                                    day: '2-digit',
-                                    month: 'short',
-                                    year: 'numeric'
-                                }).format(new Date(review.reviewDate))}
+                                    {getUserName(review.userId)} - {new Intl.DateTimeFormat('en-GB', {
+                                        day: '2-digit',
+                                        month: 'short',
+                                        year: 'numeric'
+                                    }).format(new Date(review.reviewDate))}
                                 </p>
                                 <p className="review-text">{review.reviewText}</p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 ) : (
                     <p className="no-reviews-text">No reviews available for this item.</p>
                 )}
             </div>
-            <Back/>
+            <Back />
         </>
     );
 }

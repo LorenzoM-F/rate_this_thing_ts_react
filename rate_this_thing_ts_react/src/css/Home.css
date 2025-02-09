@@ -166,3 +166,12 @@ input[type="checkbox"]:checked~.menu {
     background-color: #c9302c;
   }
   
+  .show-more-btn {
+    color: #007bff;
+    background-color: transparent;
+  }
+
+  .show-more-btn:hover {
+    text-decoration: underline;
+    background-color: transparent;
+  }
