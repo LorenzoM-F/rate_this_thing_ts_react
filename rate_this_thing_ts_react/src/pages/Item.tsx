@@ -3,9 +3,9 @@
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import '../css/Item.css';
-import Back from '../components/Back';
-import Loading from '../components/Loading';
-import Errors from '../components/Error';
+import Back from '../components/Back.tsx';
+import Loading from '../components/Loading.tsx';
+import Errors from '../components/Error.tsx';
 
 import { Review } from "../interfaces.ts";
 import type { Item } from "../interfaces.ts";
@@ -20,7 +20,7 @@ function Item() {
     useEffect(() => {
         const fetchItem = async () => {
             try {
-                const response: Response = await fetch(`http://localhost:3001/items/${id}`);
+                const response: Response = await fetch(`http://75.119.131.245:8081/v1/items/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch item details');
                 }
@@ -37,7 +37,7 @@ function Item() {
 
         const fetchReviews = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/items/${id}/reviews`);
+                const response = await fetch(`http://75.119.131.245:8081/v1/items/${id}/reviews`);
                 if (response.ok) {
                     const data = await response.json();
                     setReviews(data);

@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import Item from './pages/Item';
+import Home from './pages/Home.tsx';
+import Register from './pages/Register.tsx';
+import Login from './pages/Login.tsx';
+import Item from './pages/Item.tsx';
 
 function App() {
     return (
