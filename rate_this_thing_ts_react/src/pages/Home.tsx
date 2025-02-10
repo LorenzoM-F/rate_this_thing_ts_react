@@ -23,7 +23,7 @@ function Home() {
             try {
                 const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Inc1SjhRQmsyUkV6X2lSQ1F5Z013NSJ9.eyJpc3MiOiJodHRwczovL25pbm9jb2Rlcy5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8Njc0NGM3MTRlNWExYzBmYjg2MTFhOWJlIiwiYXVkIjoiaHR0cHM6Ly9uaW5vYXBpLmNvbSIsImlhdCI6MTczOTEyMzY4NywiZXhwIjoxNzM5MjEwMDg3LCJndHkiOiJwYXNzd29yZCIsImF6cCI6IjJiNjhMNTZJSUU5enhvRmF3dmZrT2YxR21VQ1p0RXhIIiwicGVybWlzc2lvbnMiOlsiYWRtaW4iXX0.HIGZk2z7Y5G2CHJR2U5G9cznuqlI8-cOwb3izZ9f6MrDbY40LR5pJMXEbYPS5mXT2gRUhgt58-huJBSGK2Xp4Qb2cN0p9daGK6CTKl8jH3QQbkQk10yY5-CaqAEo8O2t9tCNv7Dzmr9fL2jU5TxzKi_hxl4UpOsZoIt_6Yu0dWBsZBLtJCAGovJMHeJvKdtwcKBcTv7tQCUAOvdq3FI2vTpu9PpsNg4D56vh9OAgTs0DKa3xFoL3nL71ShwW_yD1kirOWPexv3uTC9BErYbWwqovqFyoNn0aAIp7az6rJpsoskHp6ZnV2NVFAO6kLuj5G1HCxYrz9STyyoDAYxPXzg'; // Replace with the actual token
 
-                const response: Response = await fetch('http://localhost:3001/items', {
+                const response: Response = await fetch('https://75.119.131.245:8443/v1/items', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -52,7 +52,7 @@ function Home() {
             try {
                 const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Inc1SjhRQmsyUkV6X2lSQ1F5Z013NSJ9.eyJpc3MiOiJodHRwczovL25pbm9jb2Rlcy5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8Njc0NGM3MTRlNWExYzBmYjg2MTFhOWJlIiwiYXVkIjoiaHR0cHM6Ly9uaW5vYXBpLmNvbSIsImlhdCI6MTczOTEyMzY4NywiZXhwIjoxNzM5MjEwMDg3LCJndHkiOiJwYXNzd29yZCIsImF6cCI6IjJiNjhMNTZJSUU5enhvRmF3dmZrT2YxR21VQ1p0RXhIIiwicGVybWlzc2lvbnMiOlsiYWRtaW4iXX0.HIGZk2z7Y5G2CHJR2U5G9cznuqlI8-cOwb3izZ9f6MrDbY40LR5pJMXEbYPS5mXT2gRUhgt58-huJBSGK2Xp4Qb2cN0p9daGK6CTKl8jH3QQbkQk10yY5-CaqAEo8O2t9tCNv7Dzmr9fL2jU5TxzKi_hxl4UpOsZoIt_6Yu0dWBsZBLtJCAGovJMHeJvKdtwcKBcTv7tQCUAOvdq3FI2vTpu9PpsNg4D56vh9OAgTs0DKa3xFoL3nL71ShwW_yD1kirOWPexv3uTC9BErYbWwqovqFyoNn0aAIp7az6rJpsoskHp6ZnV2NVFAO6kLuj5G1HCxYrz9STyyoDAYxPXzg'; // Replace with the actual token
 
-                const response = await fetch('http://localhost:3001/categories', {
+                const response = await fetch('https://75.119.131.245:8443/v1/categories', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

@@ -21,7 +21,7 @@ function Item() {
     useEffect(() => {
         const fetchItem = async () => {
             try {
-                const response: Response = await fetch(`http://localhost:3001/items/${id}`);
+                const response: Response = await fetch(`https://75.119.131.245:8443/v1/items/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch item details');
                 }
@@ -38,7 +38,7 @@ function Item() {
 
         const fetchReviews = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/items/${id}/reviews`);
+                const response = await fetch(`https://75.119.131.245:8443/v1/items/${id}/reviews`);
                 if (response.ok) {
                     const data: Review[] = await response.json();
                     setReviews(data);
@@ -50,7 +50,7 @@ function Item() {
 
         const fetchUsers = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/users`);
+                const response = await fetch(`https://75.119.131.245:8443/v1/users`);
                 if (response.ok) {
                     const data: User[] = await response.json();
                     setUsers(data);
